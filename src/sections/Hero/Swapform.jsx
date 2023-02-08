@@ -418,7 +418,7 @@ export default function Swapform() {
         //console.log(tokenListJSON);
         //const tokenstoUse = tokenListJSON.tokens.slice(0, 1000);
         //const tokenstoUse = tokenListJSON.slice(1);
-        const tokens = tokenListJSON.tokens.slice(0, 800);
+        const tokens = tokenListJSON.tokens.slice(0, 600);
         console.log(tokens, "API Call");
         //setSelectedone(tokens);
         setTokenlist(tokens);

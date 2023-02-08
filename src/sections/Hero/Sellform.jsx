@@ -198,7 +198,7 @@ export default function Sellform(props) {
         //test url  http://localhost:8000/paymentlink
         //main url  https://blok-ramp.herokuapp.com/paymentlink
         
-        const getpaymentlink = await fetch(`https://blok-ramp.herokuapp.com/sellcrypto`, 
+        const getpaymentlink = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/sellcrypto`, 
             {
                 method: 'POST',   
                 headers: {
@@ -242,7 +242,7 @@ export default function Sellform(props) {
     //start polling data
 
     const loop = async () => {
-        let solution = await fetch(`https://blok-ramp.herokuapp.com/checkpaid`);
+        let solution = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/checkpaid`);
         const value = await solution.json();
         console.log(value);
       
@@ -329,7 +329,7 @@ export default function Sellform(props) {
    //live https://blok-ramp.herokuapp.com/getbanks
    const getListOfBanks = async (data) => {
     console.log(data, "country data");
-    let response = await fetch(`https://blok-ramp.herokuapp.com/getbanks/${data}`);
+    let response = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/getbanks/${data}`);
     let banks = await response.json();
     //console.log(banks);
     setBankList(banks.data);

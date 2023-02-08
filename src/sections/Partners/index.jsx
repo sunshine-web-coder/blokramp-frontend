@@ -67,7 +67,7 @@ const Partners = () => {
             <Row>
                 <Col lg="12">
                     <div className="partners__heading mb-5">
-                        <h5 className='text-dark fs-xl'>Top brands admire our on-ramp solution</h5>
+                        <h5 className='text-dark fs-xl'>Top brands admire our on-ramp solutionssss</h5>
                     </div>
                     <div className="partners__sliders text-center">
                         <Slider {...settings}>

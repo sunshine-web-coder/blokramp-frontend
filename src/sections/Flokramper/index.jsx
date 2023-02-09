@@ -1,6 +1,7 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
+import "./style.css"
 
 const Flokramper = () => {
     const data = [
@@ -17,7 +18,7 @@ const Flokramper = () => {
                     </div>
                 </Col>
             </Row>
-            <Row className='gy-4'>
+            <Row className='gy-4 ddnnd'>
                 <Col lg="5">
                     {data && 
                     <div className="flokramper__testing">

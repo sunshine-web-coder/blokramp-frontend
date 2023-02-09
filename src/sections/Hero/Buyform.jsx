@@ -3,7 +3,11 @@ import { Col, Container, Row } from 'react-bootstrap';
 import appStore from './assets/app-store.svg';
 import playStore from './assets/play-store.svg';
 import Xicon from '../FeesPricing/assets/xicon.png';
-import AccpetPayments from './assets/accept.svg';
+import MasterCard from './assets/mastercard.svg';
+import VisaCard from './assets/visacard.svg';
+import ApplePay from './assets/applepay.svg';
+import Discovery from './assets/discovery.svg';
+import Express from './assets/express.svg';
 import { motion } from 'framer-motion';
 import { Tab, Tabs } from 'react-bootstrap';
 import Select, { components } from 'react-select';
@@ -419,7 +423,11 @@ export default function Buyform(props) {
            <div className='text-center'>
                <h6 className="text-dark fs-sm fw-light">We accept</h6>
 
-               <img src={AccpetPayments} alt="" className='img-fluid'/>
+               <img src={MasterCard} alt="" style={{marginRight: "10px"}} className='img-fluid'/>
+              <img src={VisaCard} alt="" style={{marginRight: "10px"}} className='img-fluid'/>
+              <img src={ApplePay} alt="" style={{marginRight: "10px"}} className='img-fluid'/>
+              <img src={Discovery} alt="" style={{marginRight: "10px"}} className='img-fluid'/>
+              <img src={Express} alt="" className='img-fluid'/>
 
 
            </div>

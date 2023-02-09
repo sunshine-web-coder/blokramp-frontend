@@ -5,8 +5,6 @@ import Accordion from 'react-bootstrap/Accordion';
 const Flokramper = () => {
     const data = [
         { title: "Request and get API plug-in" },
-        { title: "Copy & paste code to create widget" },
-        { title: "Start using integration" },
     ]
   return (
     <section className='py-5 py-lg-7 section-gap flokramper'>
@@ -51,6 +49,8 @@ const Flokramper = () => {
                                 </Accordion.Body>
                             </Accordion.Item>
                             ))}
+                            <div className='fs-md fw-bold text-dark' style={{marginLeft: "30px"}}>2. Copy & paste code to create widget</div>
+                            <div className='fs-md fw-bold text-dark' style={{marginLeft: "30px"}}>3. Start using integration</div>
                         </Accordion>
                     </div>}
                 </Col>

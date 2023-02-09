@@ -43,7 +43,7 @@ const Fiat = () => {
                     </div>
                 </Col>
             </Row>
-            <Row className='g-4 g-xl-5 text-center'>
+            {/* <Row className='g-4 g-xl-5 text-center'>
                 {data && data.list && data.list.map((item, i) => (
                 <Col key={i} sm="6" xl="3">
                     <div className="card shadow rounded-4">
@@ -54,7 +54,7 @@ const Fiat = () => {
                     </div>
                 </Col>
                 ))}
-            </Row>
+            </Row> */}
         </Container>
     </section>
   )

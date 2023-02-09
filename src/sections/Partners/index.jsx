@@ -8,20 +8,15 @@ import image2 from './assets/2.svg';
 import image3 from './assets/3.svg';
 import image4 from './assets/4.svg';
 import image5 from './assets/5.svg';
+import "./Partner.css"
 
 const Partners = () => {
     const data = [
         { icon: image1 },
         { icon: image2 },
         { icon: image3 },
-        { icon: image4 },
-        { icon: image5 },
-
-        { icon: image1 },
-        { icon: image2 },
-        { icon: image3 },
-        { icon: image4 },
-        { icon: image5 },
+        // { icon: image4 },
+        // { icon: image5 },
     ]
     const settings = {
       dots: false,
@@ -70,13 +65,16 @@ const Partners = () => {
                         <h5 className='text-dark fs-xl'>Top brands admire our on-ramp solution</h5>
                     </div>
                     <div className="partners__sliders text-center">
-                        <Slider {...settings}>
+                      <img src={image1} style={{width: "300px", height: "100px"}} className="img-fluid d-inline-block" alt="Image Item"/>
+                      <img src={image2} style={{width: "300px", height: "80px"}} className="img-fluid d-inline-block" alt="Image Item"/>
+                      <img src={image3} style={{width: "300px", height: "80px"}} className="img-fluid d-inline-block" alt="Image Item"/>
+                        {/* <Slider {...settings}>
                             {data && data.map((item, i) =>(
                             <div className='partners__item p-4' key={i}>
-                                <img src={item.icon} className="img-fluid d-inline-block" alt="Image Item"/>
+                                <img src={item.icon} style={{width: "100%", height: "80px"}} className="img-fluid d-inline-block" alt="Image Item"/>
                             </div>
                             ))}
-                        </Slider>
+                        </Slider> */}
                     </div>
                 </Col>
             </Row>

@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
-
 import "./style.css"
 
 const Flokramper = () => {
     const data = [
         { title: "Request and get API plug-in" },
     ]
-    
   return (
     <section className='py-5 py-lg-7 section-gap flokramper'>
         <Container>
@@ -21,7 +19,6 @@ const Flokramper = () => {
                 </Col>
             </Row>
             <Row className='gy-4 ddnnd'>
-                <ToastContainer position="bottom-center" limit={1} />
                 <Col lg="5">
                     {data && 
                     <div className="flokramper__testing">
@@ -32,29 +29,23 @@ const Flokramper = () => {
                                 <Accordion.Body>
                                     <form>
                                         <div className="form-group mb-3">
-                                            <input type="text" id='website' className='form-control' placeholder='Your website URL' />
+                                            <input type="text" className='form-control' placeholder='Your website URL' />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input type="text" id='companyName' className='form-control' placeholder='Your company name' />
+                                            <input type="text" className='form-control' placeholder='Your company name' />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input type="email" className='form-control' placeholder='Your business email' />
+                                            <input type="text" className='form-control' placeholder='Your business email' />
+                                            <input type="text" className='form-control' placeholder='Your business email' />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input type="text" id='firstName' className='form-control' placeholder='Your first name' />
+                                            <input type="text" className='form-control' placeholder='Your first name' />
                                         </div>
                                         <div className="form-group mb-4">
-                                            <input type="text" id='lastName' className='form-control' placeholder='Your last name' />
+                                            <input type="text" className='form-control' placeholder='Your last name' />
                                         </div>
                                         <div className="form-group">
-                                            <button type='submit'
-                                            className="btn btn-primary shadow w-100 rounded-pill">
-                                            Get API Key
-                                            </button>
-                                            {/* <button type='submit'
-                                            className="btn btn-primary shadow w-100 rounded-pill">
-                                            {loading ? 'Sending...' : 'Get API Key'}    
-                                            </button> */}
+                                            <button className="btn btn-primary shadow w-100 rounded-pill">Get API Key</button>
                                         </div>
                                     </form>
                                 </Accordion.Body>

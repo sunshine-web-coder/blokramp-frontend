@@ -7,10 +7,10 @@ import Xicon from './assets/xicon.png';
 
 const FeesPricing = () => {
     const data = [
-        { icon: Xicon, title: "Moonpay", price: "$21.32", },
-        { icon: Xicon, title: "Moonpay", price: "$21.32", },
-        { icon: Xicon, title: "Moonpay", price: "$21.32", },
-        { icon: Xicon, title: "Moonpay", price: "$21.32", },
+        { title: "White labelling", price: "$21.32", },
+        { title: "Offline crypto transfer", price: "$21.32", },
+        { title: "Stable coin launch", price: "$21.32", },
+        { title: "Blok pool", price: "$21.32", },
     ]
 
   return (
@@ -23,7 +23,7 @@ const FeesPricing = () => {
                         <div className="mb-4 mb-lg-5">
                             <p>Stake Blokramp Token and Earn up to 250% APR. Flexible staking, high yields.</p>
                         </div>
-                        <button className="btn btn-primary rounded-pill shadow fw-bold">Our Pricing</button>
+                        <button className="btn btn-primary rounded-pill shadow fw-bold">Stake</button>
                     </div>
                 </Col>
                 <Col lg="6" xl="6" className='order-lg-first'>
@@ -34,7 +34,7 @@ const FeesPricing = () => {
                             >
                         <div className="card rounded-4 shadow">
                             <div className="card-body p-4 p-lg-5">
-                                <h3 className='fs-lg fs-lg-2xl text-dark fw-bold'>Choose Seller</h3>
+                                <h3 className='fs-lg fs-lg-2xl text-dark fw-bold'>Top Anticipated products</h3>
                                 <hr className='border-dark border-opacity-25 my-4'/>
                                 <ul className="list-unstyled fs-sm fs-lg-lg fw-bold mb-5 d-flex flex-column gap-4">
                                     {data && data.map((item, i) =>(
@@ -49,13 +49,11 @@ const FeesPricing = () => {
                                         }}
                                         viewport={{ once: true }}
                                     >
-                                        {item.icon &&<img src={item.icon} />}
                                         {item.title && <div className='text-dark'>{item.title}</div>}
-                                        {item.price &&<div className='ms-auto text-primary'>{item.price}</div>}
+                                        {/* {item.price &&<div className='ms-auto text-primary'>{item.price}</div>} */}
                                     </motion.li>
                                     ))}
                                 </ul>
-                                <div className='pricebox__btn btn-outline-primary'>Confirm</div>
                             </div>
                         </div>
                         <div className="pricebox__float">
@@ -66,12 +64,12 @@ const FeesPricing = () => {
                                 }
                             }}>
                                 <div className="card-body p-4 px-lg-5">
-                                    <h5 className='mb-3 mb-lg-4 fw-bold text-dark fs-sm fs-lg-xl'>Mercuryo</h5>
+                                    <h5 className='mb-3 mb-lg-4 fw-bold text-dark fs-sm fs-lg-xl'>The future of Digital finance:</h5>
                                     <div className="mb-4 mb-lg-5">
-                                        <h6 className="text-success fs-xs fs-lg-sm fw-light mb-2">You Received</h6>
-                                        <h4 className="fw-bold text-dark fs-sm fs-lg-md">BTC 0.0156635</h4>
+                                        <h6 className="text-success fs-xs fs-lg-sm fw-light mb-2">Learn more</h6>
+                                        {/* <h4 className="fw-bold text-dark fs-sm fs-lg-md">BTC 0.0156635</h4> */}
                                     </div>
-                                    <div className='pricebox__btn btn-dark'>Send Money</div>
+                                    <div className='pricebox__btn btn-dark'>Road Map</div>
                                 </div>
                             </motion.div>
                         </div>

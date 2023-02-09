@@ -14,6 +14,8 @@ import socialLinkedin from '../../assets/social/linkedin.svg';
 import socialGithub from '../../assets/social/github.svg';
 import socialVectory from '../../assets/social/vector.svg';
 import socialBall from '../../assets/social/ball.svg';
+import { FaTelegramPlane, FaTwitter, FaInstagram, FaYoutube, FaMediumM } from 'react-icons/fa';
+import "./Footer.css"
 
 const Footer = () => {
     const data = {
@@ -89,7 +91,7 @@ const Footer = () => {
                         </div>
                         <div className="fs-xs" style={{ '--bs-font-size' : '15px' }}>
                             <p className='mb-4'>Blokramp is an on-and-off-ramp solution tailored for individual and institutional usage. Our Whitelabel on-ramp solution is designed to scale your business.</p>
-                            <div>© Copyright 2022, All Rights Reserved</div>
+                            <div>© Copyright 2023, All Rights Reserved</div>
                         </div>
                     </div>
                 </Col>
@@ -99,34 +101,35 @@ const Footer = () => {
 
                         <ul className="list-unstyled d-flex flex-column gap-3 fs-xs">
                             <li><Link to={'/'} className="text-muted">Live chat</Link></li>
-                            <li><Link to={'/'} className="text-muted">support@blokramp.com</Link></li>
-                            <li>Amsterdam, ‘s-Gravenhekje 1A   1011 TG, The Netherlands</li>
+                            <li><Link to='mailto:support@blokramp.com' className="text-muted">support@blokramp.com</Link></li>
                         </ul>
 
                     </div>
                 </Col>
                 <Col md="6" lg="3" xl="3">
                     <div className="footer-widget">
-                        <h5 className='text-dark fw-regular mb-4 mb-lg-5 fs-md'>Contacts</h5>
+                        <h5 className='text-dark fw-regular mb-4 mb-lg-5 fs-md'>About</h5>
 
                         <ul className="list-unstyled d-flex flex-column gap-3 fs-xs">
-                            <li><Link to={'/'} className="text-muted">Our Courses</Link></li>
-                            <li><Link to={'/'} className="text-muted">Quality Management</Link></li>
-                            <li><Link to={'/'} className="text-muted">Student Support</Link></li>
-                            <li><Link to={'/'} className="text-muted">Student Management</Link></li>
+                            <li><Link to={'/'} className="text-muted">Audit</Link></li>
+                            <li><Link to='https://blokramp.gitbook.io/blokramp-litepaper/blockramp-token-brmp-tokenomics' className="text-muted">Tokenomics</Link></li>
+                            <li><Link to={'/'} className="text-muted">SAFU</Link></li>
+                            <li><Link to={'/'} className="text-muted">DOXX</Link></li>
                         </ul>
 
                     </div>
                 </Col>
                 <Col md="6" lg="3" xl="2">
                     <div className="footer-widget">
-                        <h5 className='text-dark fw-regular mb-4 mb-lg-5 fs-md'>Company</h5>
+                        <h5 className='text-dark fw-regular mb-4 mb-lg-5 fs-md'>Social</h5>
 
-                        <ul className="list-unstyled d-flex flex-md-column gap-3 fs-xs">
-                            <li><Link to={'/'} className="text-muted">Terms & Conditions</Link></li>
-                            <li><Link to={'/'} className="text-muted">Privacy Policy</Link></li>
-                        </ul>
-
+                        <div className="social_link">
+                          <Link to='/' className="text-muted"><FaTelegramPlane /></Link>
+                          <Link to='/' className="text-muted"><FaTwitter /></Link>
+                          <Link to='/' className="text-muted"><FaInstagram /></Link>
+                          <Link to='/' className="text-muted"><FaYoutube /></Link>
+                          <Link to='/' className="text-muted"><FaMediumM /></Link>
+                        </div>
                     </div>
                 </Col>
             </Row>

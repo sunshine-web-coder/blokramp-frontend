@@ -14,7 +14,7 @@ const GrowUsers = () => {
                             <p>Our solution can boast more than 70% increase on your crypto payment users. We recommend the best on-ramps (vendor) that suit every transaction your users initiate at the best and most sensible rate possible.</p>
                         </div>
 
-                        <button className="btn btn-primary rounded-pill shadow fw-bold">Get Started</button>
+                        {/* <button className="btn btn-primary rounded-pill shadow fw-bold">Get Started</button> */}
                     </div>
                 </Col>
                 <Col lg="6">

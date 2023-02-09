@@ -56,12 +56,8 @@ const Header = () => {
                 slug: '#about',
             },
             {
-                name: "Documentationm",
-                slug: '#Documentationm',
-            },
-            {
-                name: "Jobs",
-                slug: '#jobs',
+                name: "Documentation",
+                slug: 'https://blokramp.gitbook.io/blokramp-litepaper/',
             },
         ]
     }
@@ -84,7 +80,7 @@ const Header = () => {
                     </Nav>
                     }
                 <Nav>
-                    <Nav.Link className='p-0 d-block' href="/"><span className='btn btn-dark rounded-pill'>Get Started</span></Nav.Link>
+                    <Nav.Link className='p-0 d-block' href="https://t.me/blokramp"><span className='btn btn-dark rounded-pill'>Join Us</span></Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>
@@ -101,7 +97,7 @@ const Header = () => {
                     {data.navmenu.map((item, i) =>(
                         <li><Link key={i} to={item.slug} className="text-muted fs-sm">{item.name}</Link></li>
                     ))}
-                    <span className='btn btn-sm btn-dark rounded-pill w-100'>Get Started</span>
+                    <a href="https://t.me/blokramp"><span className='btn btn-sm btn-dark rounded-pill w-100'>Join Us</span></a>
                 </ul>
                 }
             </motion.div>

@@ -1,5 +1,6 @@
 {
   "name": "blokramp",
+  "proxy": "http://localhost:4000/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +14,7 @@
     "@uniswap/sdk-core": "^3.1.0",
     "@uniswap/smart-order-router": "^2.10.1",
     "@uniswap/v3-sdk": "^3.9.0",
+    "axios": "^1.3.2",
     "bitcoin-address": "^0.3.0",
     "bitcoin-address-validation": "^2.2.1",
     "bootstrap": "^5.2.2",
@@ -29,6 +31,7 @@
     "react-slick": "^0.29.0",
     "react-spinners": "^0.13.7",
     "react-sticky": "^6.0.3",
+    "react-toastify": "^9.1.1",
     "sass": "^1.55.0",
     "slick-carousel": "^1.8.1",
     "uuid": "^9.0.0"

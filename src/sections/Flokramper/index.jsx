@@ -54,11 +54,11 @@ const Flokramper = () => {
                         </Accordion>
                     </div>}
                 </Col>
-                <Col lg="7">
+                {/* <Col lg="7">
                     <div className="flokramper__frame">
                         <iframe src="//codepen.io/anon/embed/QWwdEed?height=550&amp;theme-id=1&amp;slug-hash=QWwdEed&amp;default-tab=js,result" height="767" scrolling="no" frameborder="0" allowfullscreen allowpaymentrequest name="CodePen Embed QWwdEed" title="CodePen Embed QWwdEed" class="rounded" style={{ width:'100%', overflow: 'hidden' }}>CodePen Embed Fallback</iframe>
                     </div>
-                </Col>
+                </Col> */}
             </Row>
         </Container>
     </section>

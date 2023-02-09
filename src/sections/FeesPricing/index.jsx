@@ -19,9 +19,9 @@ const FeesPricing = () => {
             <Row className="gy-6 align-items-center">
                 <Col lg="6" xl="6">
                     <div className='card-body ps-lg-6 text-center text-lg-start'>
-                        <h2 className="text-dark fw-bold fs-3xl fs-md-5xl mb-3">Get the best rates on all your transaction</h2>
+                        <h2 className="text-dark fw-bold fs-3xl fs-md-5xl mb-3">Blokramp Staking</h2>
                         <div className="mb-4 mb-lg-5">
-                            <p>We filter results with the best rates on all your on-ramp transactions. You flexibly select results with the cheapest rates and user ratings.</p>
+                            <p>Stake Blokramp Token and Earn up to 250% APR. Flexible staking, high yields.</p>
                         </div>
                         <button className="btn btn-primary rounded-pill shadow fw-bold">Our Pricing</button>
                     </div>

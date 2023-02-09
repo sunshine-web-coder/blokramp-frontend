@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 
 import "./style.css"
 
@@ -11,41 +8,7 @@ const Flokramper = () => {
     const data = [
         { title: "Request and get API plug-in" },
     ]
-    // const [website, setWebsite] = useState('');
-    // const [companyName, setCompanyName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [firstName, setFirstName] = useState('');
-    // const [lastName, setLastName] = useState('');
-    // const [loading, setLoading] = useState(false);
-
-    // const submitHandler = async (e) => {
-    //     e.preventDefault();
-    //     if (!website || !companyName || !email || !firstName || !lastName) {
-    //       return toast.error('Please fill website, company name, email, first name and last name');
-    //     }
-
-    //     try{
-    //         setLoading(true);
-    //         const { data } = await axios.post(`/api/email`, {
-    //             website,
-    //             companyName,
-    //             email,
-    //             firstName,
-    //             lastName,
-    //           });
-    //           setLoading(false);
-    //           toast.success(data.message);
-
-    //     } catch (err) {
-    //         setLoading(false);
-    //         toast.error(
-    //             err.response && err.response.data.message
-    //             ? err.response.data.message
-    //             : err.message
-    //         );
-    //     }
-    // };
-
+    
   return (
     <section className='py-5 py-lg-7 section-gap flokramper'>
         <Container>
@@ -69,19 +32,19 @@ const Flokramper = () => {
                                 <Accordion.Body>
                                     <form>
                                         <div className="form-group mb-3">
-                                            <input onChange={(e) => setWebsite(e.target.value)} type="text" id='website' className='form-control' placeholder='Your website URL' />
+                                            <input type="text" id='website' className='form-control' placeholder='Your website URL' />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input onChange={(e) => setCompanyName(e.target.value)} type="text" id='companyName' className='form-control' placeholder='Your company name' />
+                                            <input type="text" id='companyName' className='form-control' placeholder='Your company name' />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input onChange={(e) => setEmail(e.target.value)} type="email" className='form-control' placeholder='Your business email' />
+                                            <input type="email" className='form-control' placeholder='Your business email' />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input onChange={(e) => setFirstName(e.target.value)} type="text" id='firstName' className='form-control' placeholder='Your first name' />
+                                            <input type="text" id='firstName' className='form-control' placeholder='Your first name' />
                                         </div>
                                         <div className="form-group mb-4">
-                                            <input onChange={(e) => setLastName(e.target.value)} type="text" id='lastName' className='form-control' placeholder='Your last name' />
+                                            <input type="text" id='lastName' className='form-control' placeholder='Your last name' />
                                         </div>
                                         <div className="form-group">
                                             <button type='submit'

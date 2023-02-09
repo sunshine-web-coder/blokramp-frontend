@@ -581,12 +581,12 @@ export default function Swapform() {
 
                   {selectedone == undefined ?
 
-                    <div className="d-flex justify-content-evenly" onClick={() => openOne()} > 
+                    <div className="d-flex justify-content-evenly" onClick={() => openOne()} style={{ cursor: "pointer" }}> 
                       <img class="token_list_img" src={tokenlist[0]?.logoURI} style={{width: '50px', height: '50px'}} /> 
                       <small class="token_list_text" style={{fontSize: '13px' }}>{tokenlist[0]?.symbol}</small>
                     </div>
                   :
-                    <div className="d-flex justify-content-evenly" onClick={() => openOne()} > 
+                    <div className="d-flex justify-content-evenly" onClick={() => openOne()} style={{ cursor: "pointer" }}> 
                        <img class="token_list_img" src={selectedone?.logoURI}  style={{width: '50px', height: '50px'}}/> 
                       <small class="token_list_text" style={{fontSize: '13px' }}>{ selectedone?.symbol }</small>
                     </div>
@@ -607,7 +607,7 @@ export default function Swapform() {
                   <input type="text" class="input-control" placeholder="0.0" aria-label="Input" value={ outputAmount } />
                   <span className="vr mx-3 my-1"></span>
   
-                  <div className='flex flex-column m*-0 px-0 no-gutter' style={{width: '30%'}} >
+                  <div className='flex flex-column m*-0 px-0 no-gutter' style={{width: '30%', cursor: "pointer"}}>
                     { selectedtwo == undefined ?
 
                         <small onClick={() => openTwo() } style={{fontSize: '13px', background: '#1554F0', color: '#fff', padding: '10px', borderRadius: '18px'}} >Select</small>
@@ -615,7 +615,7 @@ export default function Swapform() {
                         :
 
                         <>
-                        <div className="d-flex justify-content-evenly" onClick={() => openTwo() } > 
+                        <div className="d-flex justify-content-evenly" onClick={() => openTwo() } style={{ cursor: "pointer" }}> 
                               <img class="token_list_img" src={selectedtwo?.logoURI} />
                               <small class="token_list_text" style={{fontSize: '13px' }}>{selectedtwo?.symbol}</small>
                         </div>

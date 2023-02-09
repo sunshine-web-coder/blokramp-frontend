@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from 'react'
 import { Col, Container, Row } from 'react-bootstrap';
 import appStore from './assets/app-store.svg';
 import playStore from './assets/play-store.svg';
-import Xicon from '../FeesPricing/assets/xicon.png';
+import Xicon from './assets/logo.png';
 import MasterCard from './assets/mastercard.svg';
 import VisaCard from './assets/visacard.svg';
 // import ApplePay from './assets/applepay.svg';
@@ -303,7 +303,7 @@ export default function Buyform(props) {
            <form className='mb-5' onSubmit={initiate}>
                <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
                    <div className='d-flex align-items-center gap-3'>
-                       <div><img src={Xicon} alt="X" className='heroform__field-icon'/></div>
+                       <div><img src={Xicon} alt="X" style={{width: "50px"}} className='heroform__field-icon'/></div>
                        <div>
                            <h6 className='mb-0 heroform__field-title fs-md-sm fw-regular'>Best rate via</h6>
                        </div>

@@ -8,6 +8,7 @@ import Exprerience from '../../sections/Experience';
 import Payments from '../../sections/Payments';
 import Flokramper from '../../sections/Flokramper';
 import Fiat from '../../sections/Fiat';
+import Livechat from '../../components/Livechat';
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <FeesPricing />
       <Flokramper />
       <Exprerience />
+      <Livechat />
     </PrimaryLayout>
   )
 }

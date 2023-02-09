@@ -92,7 +92,7 @@ const Tokensmodal = props => {
                     { searched.map((data, index) => (
                                             
                         <div className='d-flex align-items-center' onClick={() => setSelect(data)} key={index}>
-                            <img class="token_list_img img-fluid img-thumbnail" style={{ marginRight: '7px' }} src={data.logoURI} />
+                            <img class="token_list_img img-fluid img-thumbnail" style={{ marginRight: '7px', width: '50px', height: '50px'}} src={data.logoURI} />
                             <span class="token_list_text" style={{ fontSize: '16px' }}>{data.name}</span>
                             - 
                             <span style={{ marginTop: '1px' }} >{data.symbol.toUpperCase()}</span>

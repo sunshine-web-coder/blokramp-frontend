@@ -196,7 +196,7 @@ export default function Sellform(props) {
 
         //create an employer
         //test url  http://localhost:8000/paymentlink
-        //main url  https://blok-ramp.herokuapp.com/paymentlink
+        //main url  http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/paymentlink
         
         const getpaymentlink = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/sellcrypto`, 
             {
@@ -326,7 +326,7 @@ export default function Sellform(props) {
 
  
    //test http://localhost:8000/getbanks
-   //live https://blok-ramp.herokuapp.com/getbanks
+   //live http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/getbanks
    const getListOfBanks = async (data) => {
     console.log(data, "country data");
     let response = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/getbanks/${data}`);

@@ -23,6 +23,7 @@ import Configmodal from './Configmodal';
 import Tokensmodal from './Tokensmodal';
 import tokenabi from './abi.json';
 import qs from 'qs';
+import { tokens } from './swaptokens';
 
 
 
@@ -57,7 +58,7 @@ export default function Swapform() {
 
         //prefill input
         const [inputAmount, setInputAmount] = useState(undefined);
-        const [outputAmount, setOutputAmount] = useState('0.0');
+        const [outputAmount, setOutputAmount] = useState(0);
 
         //check selected
         const [checkselect, setCheckselect] = useState(undefined);
@@ -101,6 +102,7 @@ export default function Swapform() {
         //function to get quote
         const getSellQuote = async (amounttosell) => {
           
+          /*
           let decimalfrom = 18;
           let decimalto = 18;
   
@@ -125,15 +127,14 @@ export default function Swapform() {
           decimalto = await toContract.decimals();
           console.log(decimalto);
          }
+         */
   
-         
-  
-          const amount = Number(parseInt(amounttosell) * 10 ** decimalfrom);
+          const amount = Number(parseInt(amounttosell) * 10 ** selectedone.decimals);
           //const amount = ethers.utils.parseEther(e.target.value);
         
           const params = {
-              buyToken: selectedtwo.contract_address ? selectedtwo.contract_address : selectedtwo.symbol,
-              sellToken: selectedone.contract_address ? selectedone.contract_address : selectedone.symbol,
+              buyToken: selectedtwo.address,
+              sellToken: selectedone.address,
               sellAmount: amount,
               takerAddress: signerAddress
           }
@@ -142,7 +143,7 @@ export default function Swapform() {
           console.log(getquote);
         
           // Fetch the swap price.
-          const response = await fetch(`https://api.0x.org/swap/v1/quote?${qs.stringify(params)}`);
+          const response = await fetch(`https://bsc.api.0x.org/swap/v1/quote?${qs.stringify(params)}`);
   
           
           const swapQuoteJSON = await response.json();
@@ -218,7 +219,7 @@ export default function Swapform() {
             
               // Set Token Allowance
               // Set up approval amount
-              const fromTokenAddress = selectedone.contract_address ? selectedone.contract_address : '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
+              const fromTokenAddress = selectedone.address;
               const maxApproval = new BigNumber(2).pow(256).minus(1);
               console.log("approval amount: ", maxApproval);
               const ERC20TokenContract = new ethers.Contract(fromTokenAddress, tokenabi, providerethers);
@@ -379,7 +380,7 @@ export default function Swapform() {
         console.log(getquote);
       
         // Fetch the swap price.
-        const response = await fetch(`https://api.0x.org/swap/v1/quote?${qs.stringify(params)}`);
+        const response = await fetch(`https://bsc.api.0x.org/swap/v1/quote?${qs.stringify(params)}`);
 
 
         setLoader(true);
@@ -397,7 +398,7 @@ export default function Swapform() {
         }
 
        //setHoldquote(swapQuoteJSON);
-       setOutputAmount(swapQuoteJSON.buyAmount / (10 ** selectedtwo.address));
+       setOutputAmount(swapQuoteJSON.buyAmount / (10 ** selectedtwo.decimals));
        setLoadermsg('');
        setLoader(false);
        
@@ -412,16 +413,16 @@ export default function Swapform() {
         //https://api.coingecko.com/api/v3/coins
         //coincaprika
         //https://api.coinpaprika.com/v1/coins
-        let response = await fetch('https://tokens.coingecko.com/uniswap/all.json');
-        let tokenListJSON = await response.json();
+        //let response = await fetch('https://tokens.coingecko.com/uniswap/all.json');
+        //let tokenListJSON = await response.json();
         //console.log("listing available tokens: ");
         //console.log(tokenListJSON);
         //const tokenstoUse = tokenListJSON.tokens.slice(0, 1000);
         //const tokenstoUse = tokenListJSON.slice(1);
-        const tokens = tokenListJSON.tokens.slice(0, 600);
-        console.log(tokens, "API Call");
+        //const tokens = tokenListJSON.tokens.slice(0, 800);
+        //console.log(tokens, "API Call");
         //setSelectedone(tokens);
-        setTokenlist(tokens);
+        setTokenlist(tokens.tokens);
       }
 
 
@@ -574,19 +575,19 @@ export default function Swapform() {
                 <small style={{fontSize: '10px'}}>You Spend</small>
 
                 <div className='d-flex'>
-                  <input type="text" class="input-control" name="inputname" value={1} placeholder="0.0" aria-label="Input" onChange={(e) => handleChangerecieved(e)}  />
+                  <input type="text" class="input-control" name="inputname"  placeholder="0" aria-label="Input" onChange={(e) => handleChangerecieved(e)}  />
                   <span className="vr mx-3 my-1"></span>
                   <div className='flex flex-column m*-0 px-0 no-gutter' style={{width: '30%'}} >
 
                   {selectedone == undefined ?
 
                     <div className="d-flex justify-content-evenly" onClick={() => openOne()} > 
-                      <img class="token_list_img" src={tokenlist[0]?.logoURI} /> 
+                      <img class="token_list_img" src={tokenlist[0]?.logoURI} style={{width: '50px', height: '50px'}} /> 
                       <small class="token_list_text" style={{fontSize: '13px' }}>{tokenlist[0]?.symbol}</small>
                     </div>
                   :
                     <div className="d-flex justify-content-evenly" onClick={() => openOne()} > 
-                       <img class="token_list_img" src={selectedone?.logoURI} /> 
+                       <img class="token_list_img" src={selectedone?.logoURI}  style={{width: '50px', height: '50px'}}/> 
                       <small class="token_list_text" style={{fontSize: '13px' }}>{ selectedone?.symbol }</small>
                     </div>
                   
@@ -603,7 +604,7 @@ export default function Swapform() {
                  <small style={{fontSize: '10px'}}>You Recieve</small>
                  
                  <div className="d-flex">
-                  <input type="text" class="input-control" placeholder="0.0" aria-label="Input" value={ Math.round( (outputAmount) * 10 ) / 10 } />
+                  <input type="text" class="input-control" placeholder="0.0" aria-label="Input" value={ outputAmount } />
                   <span className="vr mx-3 my-1"></span>
   
                   <div className='flex flex-column m*-0 px-0 no-gutter' style={{width: '30%'}} >
@@ -647,7 +648,7 @@ export default function Swapform() {
                 <>
   
                   <div className="form-group">
-                    {chain !== 1 ?
+                    {chain !== 56 ?
 
                         <>
                           <div className="btn btn-primary w-100 rounded-pill shadow text-warning buttongrey" type='button' style={{fontSize: '13px'}}> Wrong Chain! Connect to ETH </div>

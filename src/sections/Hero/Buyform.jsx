@@ -161,7 +161,7 @@ export default function Buyform(props) {
 
         //create an employer
         //test url  http://localhost:8000/paymentlink
-        //main url  https://blok-ramp.herokuapp.com/paymentlink
+        //main url  http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/paymentlink
         const getpaymentlink = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/paymentlink`, 
             {
                 method: 'POST',   

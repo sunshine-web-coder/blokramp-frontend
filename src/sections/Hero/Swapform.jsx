@@ -429,7 +429,7 @@ export default function Swapform() {
       //pickSelected
       const openOne = () => {
         console.log("checkers");
-        if(chain == 1) {
+        if(chain == 56) {
           setCheckselect(1);
           setOpenlistmodal(true);
         }
@@ -437,7 +437,7 @@ export default function Swapform() {
 
 
       const openTwo = () => {
-        if(chain == 1) {
+        if(chain == 56) {
           setCheckselect(2);
           setOpenlistmodal(true);
         }
@@ -616,7 +616,7 @@ export default function Swapform() {
 
                         <>
                         <div className="d-flex justify-content-evenly" onClick={() => openTwo() } style={{ cursor: "pointer" }}> 
-                              <img class="token_list_img" src={selectedtwo?.logoURI} />
+                              <img class="token_list_img" src={selectedtwo?.logoURI} style={{width: '50px', height: '50px'}}/>
                               <small class="token_list_text" style={{fontSize: '13px' }}>{selectedtwo?.symbol}</small>
                         </div>
 

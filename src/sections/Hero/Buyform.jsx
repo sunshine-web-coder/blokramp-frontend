@@ -161,8 +161,8 @@ export default function Buyform(props) {
 
         //create an employer
         //test url  http://localhost:8000/paymentlink
-        //main url  http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/paymentlink
-        const getpaymentlink = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/paymentlink`, 
+        //main url  zzz/paymentlink
+        const getpaymentlink = await fetch(`https://blok-ramp.herokuapp.com/paymentlink`, 
             {
                 method: 'POST',   
                 headers: {
@@ -192,7 +192,7 @@ export default function Buyform(props) {
 
     
     const loop = async () => {
-        let solution = await fetch(`http://blokrampp-env.eba-ucsptawd.us-east-1.elasticbeanstalk.com/check`);
+        let solution = await fetch(`https://blok-ramp.herokuapp.com/check`);
         const value = await solution.json();
         console.log(value);
       

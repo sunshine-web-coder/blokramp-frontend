@@ -124,7 +124,7 @@ const Footer = () => {
                         <h5 className='text-dark fw-regular mb-4 mb-lg-5 fs-md'>Social</h5>
 
                         <div className="social_link">
-                          <Link to='/' className="text-muted"><FaTelegramPlane /></Link>
+                          <a href='https://t.me/blokramp' className="text-muted"><FaTelegramPlane /></a>
                           <Link to='/' className="text-muted"><FaTwitter /></Link>
                           <Link to='/' className="text-muted"><FaInstagram /></Link>
                           <Link to='/' className="text-muted"><FaYoutube /></Link>

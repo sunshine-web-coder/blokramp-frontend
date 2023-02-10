@@ -100,7 +100,7 @@ const Footer = () => {
                         <h5 className='text-dark fw-regular mb-4 mb-lg-5 fs-md'>Contacts</h5>
 
                         <ul className="list-unstyled d-flex flex-column gap-3 fs-xs">
-                            <li><Link to={'/'} className="text-muted">Live chat</Link></li>
+                            <li><a href='javascript:window.$chatwoot.popoutChatWindow();' className="text-muted">Live chat</a></li>
                             <li><Link to='mailto:support@blokramp.com' className="text-muted">support@blokramp.com</Link></li>
                         </ul>
 

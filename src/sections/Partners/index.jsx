@@ -22,20 +22,20 @@ const Partners = () => {
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 5,
+      slidesToShow: 3,
       slidesToScroll: 1,
       responsive: [
         {
           breakpoint: 1200,
           settings: {
-            slidesToShow: 4,
+            slidesToShow: 2,
             slidesToScroll: 1,
           },
         },
         {
           breakpoint: 1000,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
           },
         },
@@ -65,16 +65,13 @@ const Partners = () => {
                         <h5 className='text-dark fs-xl'>Top brands admire our on-ramp solution</h5>
                     </div>
                     <div className="partners__sliders text-center">
-                      <img src={image1} style={{width: "300px", height: "100px"}} className="img-fluid d-inline-block" alt="Image Item"/>
-                      <img src={image2} style={{width: "300px", height: "80px"}} className="img-fluid d-inline-block" alt="Image Item"/>
-                      <img src={image3} style={{width: "300px", height: "80px"}} className="img-fluid d-inline-block" alt="Image Item"/>
-                        {/* <Slider {...settings}>
+                        <Slider {...settings}>
                             {data && data.map((item, i) =>(
                             <div className='partners__item p-4' key={i}>
-                                <img src={item.icon} style={{width: "100%", height: "80px"}} className="img-fluid d-inline-block" alt="Image Item"/>
+                                <img src={item.icon} className="img-fluid d-inline-block" alt="Image Item"/>
                             </div>
                             ))}
-                        </Slider> */}
+                        </Slider>
                     </div>
                 </Col>
             </Row>

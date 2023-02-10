@@ -1,14 +1,44 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Col, Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./style.css"
 
 const Flokramper = () => {
     const data = [
         { title: "Request and get API plug-in" },
     ]
+    const [website, setWebsite] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [loading, setLoading] = useState(false);
+    const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    if (!website || !companyName || !email || !firstName || !lastName) {
+        return toast.error('Please fill website, company name, email, first name and last name');
+      } else{
+        toast.success('Your message sent successfully');
+      }
+
+    emailjs.sendForm('service_tpowy3a', 'template_oqpavyc', form.current, 'UYGqYFdJDFMTFbdHL')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+
+      e.target.reset()
+  };
   return (
     <section className='py-5 py-lg-7 section-gap flokramper'>
+        <ToastContainer position="bottom-center" limit={1} />
         <Container>
             <Row className='justify-content-center'>
                 <Col lg="8" xl="7">
@@ -27,25 +57,25 @@ const Flokramper = () => {
                             <Accordion.Item key={i} eventKey={`accordion-${i}`} className="rounded-4 overflow-hidden">
                                 <Accordion.Header><div className='fs-md fw-bold text-dark'>{i+1}. {item.title}</div></Accordion.Header>
                                 <Accordion.Body>
-                                    <form>
+                                    <form ref={form} onSubmit={sendEmail}>
                                         <div className="form-group mb-3">
-                                            <input type="text" className='form-control' placeholder='Your website URL' />
+                                            <input type="text" name='website' onChange={(e) => setWebsite(e.target.value)} className='form-control' placeholder='Your website URL' required />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input type="text" className='form-control' placeholder='Your company name' />
+                                            <input type="text" name="companyName" onChange={(e) => setCompanyName(e.target.value)} className='form-control' placeholder='Your company name' required />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input type="text" className='form-control' placeholder='Your business email' />
-                                            <input type="text" className='form-control' placeholder='Your business email' />
+                                            <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} className='form-control' placeholder='Your business email' required />
                                         </div>
                                         <div className="form-group mb-3">
-                                            <input type="text" className='form-control' placeholder='Your first name' />
+                                            <input type="text" name="firstName" onChange={(e) => setFirstName(e.target.value)} className='form-control' placeholder='Your first name' required />
                                         </div>
                                         <div className="form-group mb-4">
-                                            <input type="text" className='form-control' placeholder='Your last name' />
+                                            <input type="text" name="lastName" onChange={(e) => setLastName(e.target.value)} className='form-control' placeholder='Your last name' required />
                                         </div>
                                         <div className="form-group">
-                                            <button className="btn btn-primary shadow w-100 rounded-pill">Get API Key</button>
+                                            <button type='submit' disabled={loading} className="btn btn-primary shadow w-100 rounded-pill">
+                                            {loading ? 'Sending...' : 'Get API Key'}</button>
                                         </div>
                                     </form>
                                 </Accordion.Body>

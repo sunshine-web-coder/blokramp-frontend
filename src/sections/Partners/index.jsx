@@ -3,8 +3,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import image1 from './assets/1.svg';
-import image2 from './assets/2.svg';
+import image1 from './assets/2.svg';
+import image2 from './assets/1.svg';
 import image3 from './assets/3.svg';
 import image4 from './assets/4.svg';
 import image5 from './assets/5.svg';
@@ -24,6 +24,7 @@ const Partners = () => {
       speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
+      autoplay: true,
       responsive: [
         {
           breakpoint: 1200,

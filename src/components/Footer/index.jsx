@@ -128,7 +128,6 @@ const Footer = () => {
                           <Link to='https://twitter.com/Blokramp_inc?t=oofMcdHjFQyE2mcH8o8f9A&s=09' className="text-muted"><FaTwitter /></Link>
                           <Link to='https://www.instagram.com/blokramp_inc' className="text-muted"><FaInstagram /></Link>
                           <Link to='https://youtube.com/@blokramp' className="text-muted"><FaYoutube /></Link>
-                          <Link to='/' className="text-muted"><FaMediumM /></Link>
                         </div>
                     </div>
                 </Col>

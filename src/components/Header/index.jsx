@@ -51,10 +51,10 @@ const Header = () => {
                 name: "Home",
                 slug: '/',
             },
-            {
-                name: "About",
-                slug: '#about',
-            },
+            // {
+            //     name: "About",
+            //     slug: '#about',
+            // },
             {
                 name: "Documentation",
                 slug: 'https://blokramp.gitbook.io/blokramp-litepaper/',

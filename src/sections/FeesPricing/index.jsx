@@ -69,7 +69,7 @@ const FeesPricing = () => {
                                         <h6 className="text-success fs-xs fs-lg-sm fw-light mb-2">Learn more</h6>
                                         {/* <h4 className="fw-bold text-dark fs-sm fs-lg-md">BTC 0.0156635</h4> */}
                                     </div>
-                                    <div className='pricebox__btn btn-dark'>Road Map</div>
+                                    <a href="https://blokramp.gitbook.io/blokramp-litepaper/road-map"><div className='pricebox__btn btn-dark'>Road Map</div></a>
                                 </div>
                             </motion.div>
                         </div>

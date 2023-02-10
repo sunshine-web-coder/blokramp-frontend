@@ -1,3 +1,10 @@
-.dhdhhd{
-    display: none;
+.partners__item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.partners__item img{
+    height: 100px;
 }

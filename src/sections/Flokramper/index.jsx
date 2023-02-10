@@ -27,7 +27,7 @@ const Flokramper = () => {
         toast.success('Your message sent successfully');
       }
 
-    emailjs.sendForm('service_tpowy3a', 'template_oqpavyc', form.current, 'UYGqYFdJDFMTFbdHL')
+    emailjs.sendForm('service_jfvj0r5', 'template_xsfytrk', form.current, 'N-kPUBLLizOnu40nB')
       .then((result) => {
           console.log(result.text);
       }, (error) => {

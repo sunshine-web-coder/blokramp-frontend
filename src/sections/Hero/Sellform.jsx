@@ -200,9 +200,9 @@ export default function Sellform(props) {
 
         //create an employer
         //test url  http://localhost:8000/paymentlink
-        //main url  https://blok-ramp.herokuapp.com/paymentlink
+        //main url  https://blokramp.onrender.com/paymentlink
         
-        const getpaymentlink = await fetch(`https://blok-ramp.herokuapp.com/sellcrypto`, 
+        const getpaymentlink = await fetch(`https://blokramp.onrender.com/sellcrypto`, 
             {
                 method: 'POST',   
                 headers: {
@@ -246,7 +246,7 @@ export default function Sellform(props) {
     //start polling data
 
     const loop = async () => {
-        let solution = await fetch(`https://blok-ramp.herokuapp.com/checkpaid`);
+        let solution = await fetch(`https://blokramp.onrender.com/checkpaid`);
         const value = await solution.json();
         console.log(value);
       
@@ -330,10 +330,10 @@ export default function Sellform(props) {
 
  
    //test http://localhost:8000/getbanks
-   //live https://blok-ramp.herokuapp.com/getbanks
+   //live https://blokramp.onrender.com/getbanks
    const getListOfBanks = async (data) => {
     console.log(data, "country data");
-    let response = await fetch(`https://blok-ramp.herokuapp.com/getbanks/${data}`);
+    let response = await fetch(`https://blokramp.onrender.com/getbanks/${data}`);
     let banks = await response.json();
     //console.log(banks);
     setBankList(banks.data);

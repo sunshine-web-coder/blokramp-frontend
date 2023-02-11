@@ -13,6 +13,7 @@ import { Tab, Tabs } from 'react-bootstrap';
 import Select, { components } from 'react-select';
 import currencyUSD from './assets/currency-usd.svg';
 import currencyBTC from './assets/currency-btc.svg';
+import currencyUSDT from './assets/tether.svg';
 import arrow from './assets/arrow-down.svg';
 import shape1 from './assets/hero-shape-1.svg';
 import shape2 from './assets/hero-shape-2.svg';
@@ -20,7 +21,6 @@ import shape3 from './assets/arrow-shape.svg';
 import shape4 from './assets/hero-user.svg';
 import currencyETH from './assets/ethereum.svg';
 import currencyBNB from './assets/binance.svg';
-import currencyUSDT from './assets/tether.svg';
 import { v4 as uuidv4 } from 'uuid';
 import { ethers } from 'ethers';
 import Buyemailandaddress from './Buyemailandaddress';
@@ -37,17 +37,10 @@ const options = [
 
 const optionstwo = [
     { value: 'ethereum', label: 'ETH', icon:  currencyETH},
-    { value: 'bitcoin', label: 'BTC', icon:  currencyBTC },
+    { value: 'usdt', label: 'USDT', icon:  currencyUSDT },
     { value: 'binancecoin', label: 'BNB', icon:  currencyBNB },
 ]; 
 
-
-
-const rate_options = [
-    { value: 'mtpelerin', label: 'Mt Pelerin',},
-    { value: 'Moonpay', label: 'Moon pay',},
-    { value: 'mercuryo', label: 'mercuryo',},
-];
 
 
 
@@ -166,7 +159,7 @@ export default function Buyform(props) {
         //create an employer
         //test url  http://localhost:8000/paymentlink
         //main url  zzz/paymentlink
-        const getpaymentlink = await fetch(`https://blok-ramp.herokuapp.com/paymentlink`, 
+        const getpaymentlink = await fetch(`https://blokramp.onrender.com/paymentlink`, 
             {
                 method: 'POST',   
                 headers: {
@@ -196,7 +189,7 @@ export default function Buyform(props) {
 
     
     const loop = async () => {
-        let solution = await fetch(`https://blok-ramp.herokuapp.com/check`);
+        let solution = await fetch(`https://blokramp.onrender.com/check`);
         const value = await solution.json();
         console.log(value);
       

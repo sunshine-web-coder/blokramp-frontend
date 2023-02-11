@@ -36,7 +36,7 @@ const Payments = () => {
                                 <source src={tVideo} type="video/mp4" />
                             </video>
                             {/* <img src={closeIcon} className='close' alt="" /> */}
-                            <RiCloseCircleFill className='close' />
+                            <RiCloseCircleFill className='close' onClick={()=> setOpen(false)} />
                         </div>
                     </div>
                 </Col>

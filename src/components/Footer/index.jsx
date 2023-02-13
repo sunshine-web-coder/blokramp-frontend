@@ -111,7 +111,7 @@ const Footer = () => {
                         <h5 className='text-dark fw-regular mb-4 mb-lg-5 fs-md'>About</h5>
 
                         <ul className="list-unstyled d-flex flex-column gap-3 fs-xs">
-                            <li><Link to={'/'} className="text-muted">Audit</Link></li>
+                            <li><Link to='https://github.com/cyberscope-io/audits/blob/main/brmp/audit.pdf' className="text-muted">Audit</Link></li>
                             <li><Link to='https://blokramp.gitbook.io/blokramp-litepaper/blockramp-token-brmp-tokenomics' className="text-muted">Tokenomics</Link></li>
                             <li><Link to={'/'} className="text-muted">SAFU</Link></li>
                             <li><Link to={'/'} className="text-muted">DOXX</Link></li>

@@ -159,7 +159,7 @@ export default function Buyform(props) {
         //create an employer
         //test url  http://localhost:8000/paymentlink
         //main url  zzz/paymentlink
-        const getpaymentlink = await fetch(`https://blokramp.onrender.com/paymentlink`, 
+        const getpaymentlink = await fetch(`https://blokramp-api.onrender.com/paymentlink`, 
             {
                 method: 'POST',   
                 headers: {
@@ -189,7 +189,7 @@ export default function Buyform(props) {
 
     
     const loop = async () => {
-        let solution = await fetch(`https://blokramp.onrender.com/check`);
+        let solution = await fetch(`https://blokramp-api.onrender.com/check`);
         const value = await solution.json();
         console.log(value);
       

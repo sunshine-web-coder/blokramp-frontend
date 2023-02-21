@@ -41,7 +41,7 @@ const options = [
 
 const optionstwo = [
     { value: 'ethereum', label: 'ETH', icon:  currencyETH},
-    { value: 'bitcoin', label: 'BTC', icon:  currencyBTC },
+    { value: 'usdt', label: 'USDT', icon:  currencyUSDT },
     { value: 'binancecoin', label: 'BNB', icon:  currencyBNB },
 ]; 
 
@@ -165,13 +165,9 @@ export default function Sellform(props) {
 
     //confirm account number
     const [confirmcAccount, setConfirmAccount] = useState(false);
+    //User Address
+    const [userAddress, setUserAddress] = useState(undefined);
 
-
-    const [test, setTest] = useState([
-        { value: 'mtpelerin', label: 'Mt Pelerin',},
-        { value: 'Moonpay', label: 'Moon pay',},
-        { value: 'mercuryo', label: 'mercuryo',},
-    ])
 
 
 
@@ -200,9 +196,9 @@ export default function Sellform(props) {
 
         //create an employer
         //test url  http://localhost:8000/paymentlink
-        //main url  https://blokramp.onrender.com/paymentlink
+        //main url  https://blokramp-api.onrender.com/paymentlink
         
-        const getpaymentlink = await fetch(`https://blokramp.onrender.com/sellcrypto`, 
+        const getpaymentlink = await fetch(`https://blokramp-api.onrender.com/sellcrypto`, 
             {
                 method: 'POST',   
                 headers: {
@@ -210,7 +206,9 @@ export default function Sellform(props) {
                 'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ 
-                    id: id, 
+                    id: id,
+                    crypto: selectedCrypto.value,
+                    address: userAddress,
                     amount: moneyinput, 
                     token: selectedCrypto.label,
                     country: country.currency,
@@ -246,7 +244,7 @@ export default function Sellform(props) {
     //start polling data
 
     const loop = async () => {
-        let solution = await fetch(`https://blokramp.onrender.com/checkpaid`);
+        let solution = await fetch(`https://blokramp-api.onrender.com/checkpaid`);
         const value = await solution.json();
         console.log(value);
       
@@ -330,10 +328,10 @@ export default function Sellform(props) {
 
  
    //test http://localhost:8000/getbanks
-   //live https://blokramp.onrender.com/getbanks
+   //live https://blokramp-api.onrender.com/getbanks
    const getListOfBanks = async (data) => {
     console.log(data, "country data");
-    let response = await fetch(`https://blokramp.onrender.com/getbanks/${data}`);
+    let response = await fetch(`https://blokramp-api.onrender.com/getbanks/${data}`);
     let banks = await response.json();
     //console.log(banks);
     setBankList(banks.data);
@@ -481,6 +479,8 @@ export default function Sellform(props) {
                         banklist={banklist}
                         setConfirmAccount={setConfirmAccount}
                         setNotiy={setNotiy}
+                        setUserAddress={setUserAddress}
+                        selectedCrypto={selectedCrypto}
                         />
 
                         : country.currency == "USD" ?
@@ -495,7 +495,10 @@ export default function Sellform(props) {
                         setRoutingNumber={setRoutingNumber}
                         setSwiftCode={setSwiftCode}
                         setBeneficiaryName={setBeneficiaryName}
+                        setBeneficiaryAddress={setBeneficiaryAddress}                        
                         setBeneficiaryCountry={setBeneficiaryCountry}
+                        setUserAddress={setUserAddress}
+                        selectedCrypto={selectedCrypto}
                         />
 
                         : country.currency == "EUR" || country.currency == "GBP" ?
@@ -511,11 +514,14 @@ export default function Sellform(props) {
                         setRoutingNumber={setRoutingNumber}
                         setSwiftCode={setSwiftCode}
                         setBeneficiaryName={setBeneficiaryName}
+                        setBeneficiaryAddress={setBeneficiaryAddress}
                         setBeneficiaryCountry={setBeneficiaryCountry}
                         setPostalCode={setPostalCode}
                         setStreetNumber={setStreetNumber}
                         setStreetName={setStreetName}
                         setCity={setCity}
+                        setUserAddress={setUserAddress}
+                        selectedCrypto={selectedCrypto}
                         />
 
 

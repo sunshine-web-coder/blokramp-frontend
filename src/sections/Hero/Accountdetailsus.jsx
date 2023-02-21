@@ -53,9 +53,8 @@ import { BiArrowBack } from 'react-icons/bi';
                 class="input-control" 
                 placeholder="RoutingNumber"
                 aria-label="Input" 
-                name='customerAddress' 
-                defaultValue={props.accountNumber}
-                onChange={(e) => props.setAccountNumber(e)}/>
+                name='customerAddress'
+                onChange={(e) => props.setRoutingNumber(e)}/>
         </div>
 
         <div className="form-group currency-form mb-4">
@@ -64,9 +63,8 @@ import { BiArrowBack } from 'react-icons/bi';
                 class="input-control" 
                 placeholder="SwiftCode"
                 aria-label="Input" 
-                name='customerAddress' 
-                defaultValue={props.accountNumber}
-                onChange={(e) => props.setAccountNumber(e)}/>
+                name='customerAddress'
+                onChange={(e) => props.setSwiftCode(e)}/>
         </div>
 
         <div className="form-group currency-form mb-4">
@@ -76,8 +74,7 @@ import { BiArrowBack } from 'react-icons/bi';
                 placeholder="BeneficiaryName"
                 aria-label="Input" 
                 name='customerAddress' 
-                defaultValue={props.accountNumber}
-                onChange={(e) => props.setAccountNumber(e)}/>
+                onChange={(e) => props.setBeneficiaryName(e)}/>
         </div>
 
         <div className="form-group currency-form mb-4">
@@ -88,7 +85,7 @@ import { BiArrowBack } from 'react-icons/bi';
                 aria-label="Input" 
                 name='customerAddress' 
                 defaultValue={props.accountNumber}
-                onChange={(e) => props.setAccountNumber(e)}/>
+                onChange={(e) => props.setBeneficiaryAddress(e)}/>
         </div>
 
         <div className="form-group currency-form mb-4">
@@ -99,8 +96,19 @@ import { BiArrowBack } from 'react-icons/bi';
                 aria-label="Input" 
                 name='customerAddress' 
                 defaultValue={props.accountNumber}
-                onChange={(e) => props.setAccountNumber(e)}/>
+                onChange={(e) => props.setBeneficiaryCountry(e)}/>
         </div>
+
+
+        <div className="form-group currency-form mb-4">
+            <input 
+                type="text" 
+                class="input-control" 
+                placeholder={`${props.selectedCrypto.label} address`}
+                aria-label="Input" 
+                name='customerAddress' 
+                onChange={(e) => props.setUserAddress(e)}/>
+        </div>        
 
     </div>
   )

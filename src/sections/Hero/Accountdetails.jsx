@@ -82,6 +82,19 @@ import { BiArrowBack } from 'react-icons/bi';
                 style={{fontSize: '17px'}}
                 onChange={(e) => confirmAccount(e)}/>
         </div>
+
+
+        <div className="form-group currency-form mb-4">
+            <input 
+                type="text" 
+                class="input-control" 
+                placeholder={`${props.selectedCrypto.label} address`}
+                aria-label="Input" 
+                name='customerAddress' 
+                onChange={(e) => props.setUserAddress(e)}/>
+        </div>
+
+
     </div>
   )
 }

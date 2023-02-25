@@ -113,7 +113,7 @@ const Footer = () => {
                         <ul className="list-unstyled d-flex flex-column gap-3 fs-xs">
                             <li><Link to='https://github.com/cyberscope-io/audits/blob/main/brmp/audit.pdf' className="text-muted">Audit</Link></li>
                             <li><Link to='https://blokramp.gitbook.io/blokramp-litepaper/blockramp-token-brmp-tokenomics' className="text-muted">Tokenomics</Link></li>
-                            <li><Link to={'/'} className="text-muted">SAFU</Link></li>
+                            <li><Link to='https://t.me/TrynosTokenTerminal/531' className="text-muted">SAFU</Link></li>
                             <li><Link to={'/'} className="text-muted">DOXX</Link></li>
                         </ul>
 

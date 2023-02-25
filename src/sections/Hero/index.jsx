@@ -272,7 +272,7 @@ const Hero = () => {
                             <p className='fs-md-sm lh-lg'>Instant fiat-to-crypto transactions all in one place. Get a customized on-ramp widget for your e-commerce website and scale your business using our solution.</p>
                         </div>
                         <ul className="list-unstyled d-inline-flex flex-wrap gap-3">
-                            <a href=""><button className="btn btn-primary shadow rounded-pill">Buy Presale</button></a>
+                            <a target="_blank" href="https://www.pinksale.finance/launchpad/0x45b28fe5Bb91a59CEac18E62Be60216110D5769F?chain=BSC"><button className="btn btn-primary shadow rounded-pill">Buy Presale</button></a>
                             <a target="_blank" href="https://blokramp.gitbook.io/blokramp-litepaper/"><button className="btn btn-outline-primary shadow rounded-pill">Whitepaper</button></a>
                         </ul>
                         {/* {data && data.action && <div>

@@ -23,7 +23,7 @@ const FeesPricing = () => {
                         <div className="mb-4 mb-lg-5">
                             <p>The Blokramp is the token used in the Blok ecosystem and will be extensively used to process transactions, governance on the network, back our stable coin and in the Blok pool to provide liquidity.</p>
                         </div>
-                        <button className="btn btn-primary rounded-pill shadow fw-bold">Buy</button>
+                        <a target="_blank" href="https://www.pinksale.finance/launchpad/0x45b28fe5Bb91a59CEac18E62Be60216110D5769F?chain=BSC"><button className="btn btn-primary rounded-pill shadow fw-bold">Buy</button></a>
                     </div>
                 </Col>
                 <Col lg="6" xl="6" className='order-lg-first'>

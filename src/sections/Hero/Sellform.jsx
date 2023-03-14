@@ -10,17 +10,6 @@ import Discovery from './assets/discovery.svg';
 import Express from './assets/express.svg';
 import { motion } from 'framer-motion';
 import { Tab, Tabs } from 'react-bootstrap';
-import Select, { components } from 'react-select';
-import currencyUSD from './assets/currency-usd.svg';
-import currencyBTC from './assets/currency-btc.svg';
-import arrow from './assets/arrow-down.svg';
-import shape1 from './assets/hero-shape-1.svg';
-import shape2 from './assets/hero-shape-2.svg';
-import shape3 from './assets/arrow-shape.svg';
-import shape4 from './assets/hero-user.svg';
-import currencyETH from './assets/ethereum.svg';
-import currencyBNB from './assets/binance.svg';
-import currencyUSDT from './assets/tether.svg';
 import { v4 as uuidv4 } from 'uuid';
 import { ethers } from 'ethers';
 import Bankselect from './Bankselect';
@@ -29,91 +18,76 @@ import Collectcryptoaddress from './Collectcryptoaddress';
 import Accountdetails from './Accountdetails';
 import Accountdetailsus from './Accountdetailsus';
 import Accountdetailsuk from './Accountdetailsuk';
+import SellHome from './SellHome';
+import Sendcrypto from './Sendcrypto';
+import currencyETH from './assets/ethereum.svg';
+import currencyBNB from './assets/binance.svg';
+import currencyUSDT from './assets/tether.svg';
+import currencyMatic from './assets/polygon.svg';
+import currencyDoge from './assets/dogecoin.svg';
+import currencyATOM from './assets/cosmos.svg';
+import currencyOKB from './assets/okb.svg';
 
 
-
-
-
-const options = [
-    { value: 'usd', label: 'USD', icon:  currencyUSD},
-    { value: 'eur', label: 'EUR', icon:  currencyUSD },
-]; 
 
 const optionstwo = [
-    { value: 'ethereum', label: 'ETH', icon:  currencyETH},
-    { value: 'usdt', label: 'USDT', icon:  currencyUSDT },
-    { value: 'binancecoin', label: 'BNB', icon:  currencyBNB },
-]; 
-
-
-
-const rate_options = [
-    { value: 'mtpelerin', label: 'Mt Pelerin',},
-    { value: 'Moonpay', label: 'Moon pay',},
-    { value: 'mercuryo', label: 'mercuryo',},
+    {
+        value: 'ethereum',
+        label: 'ETH',
+        icon: currencyETH,
+        address: '0x0000000000000000000000000000000000001010',
+        chain: 5
+     },
+     {
+       value: 'binancecoin',
+       label: 'BNB',
+       icon: currencyBNB,
+       address: "0x0000000000000000000000000000000000001010",
+       chain: 56
+     },
+     {
+       value: 'matic-network',
+       label: 'MATIC',
+       icon: currencyMatic,
+       address: "0x0000000000000000000000000000000000001010",
+       chain: 137
+     },
+     {
+       value: 'usdt',
+       label: 'USDT',
+       icon: currencyUSDT,
+       address: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+       chain: 1
+     },
+     {
+       value: 'dogecoin',
+       label: 'Doge',
+       icon: currencyDoge,
+       address: "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+       chain: 56
+     },
+     {
+       value: 'cosmos',
+       label: 'ATOM',
+       icon: currencyATOM,
+       address: "0x0eb3a705fc54725037cc9e008bdede697f62f335",
+       chain: 56
+     },
+     {
+       value: 'okb',
+       label: 'OKB',
+       icon: currencyOKB,
+       address: "0x75231f58b43240c9718dd58b4967c5114342a86c",
+       chain: 1
+     },
+     {
+        value: 'okb',
+        label: 'test',
+        icon: "./asset/test",
+        address: "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee",
+        chain: 97
+      }
 ];
-
-
-
-
-const svgVariants = {
-    hidden: {
-         rotate: -180
-    },
-    visible: {
-        rotate: 0,
-        transition: {
-            duration: 1
-        }
-    }
-}
-
-
-const IconOption = props => (
-    <components.Option {...props}>
-        <span className="me-2"><img src={props.data.icon} alt={props.data.label}/></span>
-        <span>{props.data.label}</span>
-    </components.Option>
-);
-
-
-
-const ValueContainer = ({children, ...props}) => {
-    if (!props.hasValue) {
-      return <components.ValueContainer {...props}>{children}</components.ValueContainer>;
-    }
-  
-    const value = props.getValue()[0];
-    //console.log("CAHNGE", value);
-
-    return (
-      <components.ValueContainer {...props}>
-        <div className="d-flex gap-2">
-            <span><img src={value.icon} alt={value.label}/></span>
-            <span>{value.label}</span>
-        </div>
-      </components.ValueContainer>
-    );
-  };
-
-
-
-
-const DropdownIndicator = props => {
-    return (
-      <components.DropdownIndicator {...props}>
-        <img src={arrow} />
-      </components.DropdownIndicator>
-    );
-};
-
-
-
-
-
-
-
-
 
 
 
@@ -122,15 +96,14 @@ export default function Sellform(props) {
 
 
     const [selectedCrypto, setSelectedCrypto] = useState(optionstwo[0]);
-    const [cryptoAmountBuy, setCryptoAmountBuy] = useState(undefined);
+    const [cryptoAmountBuy, setCryptoAmountBuy] = useState();
     const [moneyinput, setMoneyInput] = useState(4000);
     const [picked, setPicked] = useState(false);
 
     //clients country
-    const [country, setCountry] = useState(undefined);
+    const [country, setCountry] = useState();
 
     //for forms
-    const [formbankselect, setFormbankselect] = useState(false);
     const [formbankdetails, setFormbankdetails] = useState(false);
     const [formsellersaddress, setFormsellersaddress] = useState(false);
     const [formtransfercrypto, setFormtransfercrypto] = useState(false);
@@ -140,38 +113,45 @@ export default function Sellform(props) {
     const [proceednext, setProceednext] = useState(false);
 
     //btc price
-    const [btc, setBTC] = useState(undefined);
+    const [btc, setBTC] = useState();
     //notification
-    const [notify, setNotiy] = useState(undefined);
+    const [notify, setNotiy] = useState();
 
     //sellers bank account details
     const [bankAccount, setBankAccount] = useState('');
     const [accountNumber, setAccountNumber] = useState('');
     //list of banks
-    const [banklist, setBankList] = useState(undefined);
+    const [banklist, setBankList] = useState();
     //bank modal
     const [modalbank, setModalBank] = useState(false);
 
     //us and uk values
-    const [routingNumber, setRoutingNumber] = useState(undefined);
-    const [swiftCode, setSwiftCode] = useState(undefined);
-    const [beneficiaryName, setBeneficiaryName] = useState(undefined);
-    const [beneficiaryCountry, setBeneficiaryCountry] = useState(undefined);
-    const [beneficiaryAddress, setBeneficiaryAddress] = useState(undefined);
-    const [postalCode, setPostalCode] = useState(undefined);
-    const [streetNumber, setStreetNumber] = useState(undefined);
-    const [StreetName, setStreetName] = useState(undefined);
-    const [city, setCity] = useState(undefined);
+    const [routingNumber, setRoutingNumber] = useState();
+    const [swiftCode, setSwiftCode] = useState();
+    const [beneficiaryName, setBeneficiaryName] = useState();
+    const [beneficiaryCountry, setBeneficiaryCountry] = useState();
+    const [beneficiaryAddress, setBeneficiaryAddress] = useState();
+    const [postalCode, setPostalCode] = useState();
+    const [streetNumber, setStreetNumber] = useState();
+    const [StreetName, setStreetName] = useState();
+    const [city, setCity] = useState();
 
-    //confirm account number
-    const [confirmcAccount, setConfirmAccount] = useState(false);
+    //confirms account number
+    const [confirmcTx, setConfirmTx] = useState(false);
+    const [confirmBank, setConfirmBank] = useState(false);
+    const [formbankselect, setFormbankselect] = useState(false);
+
     //User Address
-    const [userAddress, setUserAddress] = useState(undefined);
+    const [userAddress, setUserAddress] = useState();
 
+    //track window instance
+    const [windowTrack, setWindowTrack] = useState();
 
+   // switching
+   const [levels, setLevels] = useState("home"); //"home" is default
 
-
-
+  //data recieved
+  const [amountRecieved, setAmountRecieved] = useState();
 
 
     const sell = async (e) => {
@@ -194,11 +174,14 @@ export default function Sellform(props) {
         return;
        }
 
+       const sendAmount = (amountRecieved/cryptoAmountBuy) * moneyinput;
+
+       console.log(sendAmount);
+
         //create an employer
         //test url  http://localhost:8000/paymentlink
-        //main url  https://blokramp-api.onrender.com/paymentlink
-        
-        const getpaymentlink = await fetch(`https://blokramp-api.onrender.com/sellcrypto`, 
+        //main url  https://blok-ramp.herokuapp.com/paymentlink
+         await fetch(`https://blokramp-api.onrender.com/transfertobank`, 
             {
                 method: 'POST',   
                 headers: {
@@ -208,8 +191,11 @@ export default function Sellform(props) {
                 body: JSON.stringify({ 
                     id: id,
                     crypto: selectedCrypto.value,
+                    cAddress: selectedCrypto.address,
+                    chain: selectedCrypto.chain,
                     address: userAddress,
-                    amount: moneyinput, 
+                    amount: sendAmount,
+                    cryptoAmount: cryptoAmountBuy,
                     token: selectedCrypto.label,
                     country: country.currency,
                     accountbank: bankAccount,
@@ -224,19 +210,17 @@ export default function Sellform(props) {
                     StreetName: StreetName,
                     city: city
                   })
-            }
-        );
-         const url = await getpaymentlink.json();
-         console.log(url);
-         //console.log(url.response);
-         
-         //props.setFrameurl(url.payment_url);
-         //props.setCallframe(true);
-         window.open(url.payment_url, 'rating', 'width=500,height=600');
+            });
+
+         try {
+            props.setLoading(true);
+            loop(); 
+         } catch(err) {
+            props.setLoading(false);
+         }
+
         //window.open(url.response.data.link, 'newwindow', 'width=500,height=600');
-        
-        props.setLoading(true);
-        loop(); 
+    
        
     }
 
@@ -250,10 +234,7 @@ export default function Sellform(props) {
       
         if (value.check === true) {
            console.log('this will run')
-
-           console.log("call server to call fluter wave and transfer money");
            props.setLoading(false);
-           //then call transfer money
           return;
 
         } else {
@@ -295,7 +276,10 @@ export default function Sellform(props) {
 
 
     const changeing = async (e) => {
-        
+      if(selectedCrypto.value == "usdt") {
+        setCryptoAmountBuy(moneyinput);
+        return;
+      }
         let response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto.value}&vs_currencies=usd`);
         let price = await response.json();
         let firstval = Object.values(price)[0];
@@ -311,24 +295,113 @@ export default function Sellform(props) {
 
 
     const openextform = () => {
-       console.log("Recalled");
-       setProceednext(false);
-       console.log(formbankselect);
-        if(!formcomplete && !formbankselect) {
-            setFormbankselect(true);
-        } else if( !formcomplete && formbankselect) {
-            console.log("ionside")
-            setFormbankdetails(true);
-            setFormcomplete(true);
-        } else {
-            console.log("hi");
+
+        switch (levels) {
+            case "home":
+               return <SellHome
+               setSelectedCrypto={setSelectedCrypto}
+               cryptoAmountBuy={cryptoAmountBuy}
+               changeing={changeing}
+               moneyinput={moneyinput}
+               optionstwo={optionstwo}
+                /> ;
+            case "bankselect":
+                return <Bankselect 
+                setFormbankselect={setFormbankselect}
+                setLevels={setLevels}
+                setProceednext={setProceednext}
+                />;
+            case "accountdetails":
+                return <>
+                 
+                { country.country == 'NG' || country.country == 'GH' || country.country == 'KE' || country.country == 'UG' || country.country == 'ZA' || country.country == 'TZ' ?
+
+                  <Accountdetails
+                  setBankAccount={setBankAccount}
+                  bankAccount={bankAccount}
+                  setAccountNumber={setAccountNumber}
+                  accountNumber={accountNumber}
+                  formbankdetails={formbankdetails}
+                  setProceednext={setProceednext}
+                  setFormbankdetails={setFormbankdetails}
+                  banklist={banklist}
+                  setConfirmBank={setConfirmBank}
+                  setNotiy={setNotiy}
+                  setUserAddress={setUserAddress}
+                  selectedCrypto={selectedCrypto}
+                  setLevels={setLevels}
+                  />
+
+                  : country.currency == "USD" ?
+
+                  <Accountdetailsus
+                  setBankAccount={setBankAccount}
+                  bankAccount={bankAccount}
+                  setAccountNumber={setAccountNumber}
+                  accountNumber={accountNumber}
+                  setProceednext={setProceednext}
+                  setFormbankdetails={setFormbankdetails}
+                  setRoutingNumber={setRoutingNumber}
+                  setSwiftCode={setSwiftCode}
+                  setBeneficiaryName={setBeneficiaryName}
+                  setBeneficiaryAddress={setBeneficiaryAddress}                        
+                  setBeneficiaryCountry={setBeneficiaryCountry}
+                  setUserAddress={setUserAddress}
+                  selectedCrypto={selectedCrypto}
+                  setLevels={setLevels}
+                  />
+
+                  : country.currency == "EUR" || country.currency == "GBP" ?
+
+
+                  <Accountdetailsuk
+                  setBankAccount={setBankAccount}
+                  bankAccount={bankAccount}
+                  setAccountNumber={setAccountNumber}
+                  accountNumber={accountNumber}
+                  setProceednext={setProceednext}
+                  setFormbankdetails={setFormbankdetails}
+                  setRoutingNumber={setRoutingNumber}
+                  setSwiftCode={setSwiftCode}
+                  setBeneficiaryName={setBeneficiaryName}
+                  setBeneficiaryAddress={setBeneficiaryAddress}
+                  setBeneficiaryCountry={setBeneficiaryCountry}
+                  setPostalCode={setPostalCode}
+                  setStreetNumber={setStreetNumber}
+                  setStreetName={setStreetName}
+                  setCity={setCity}
+                  setUserAddress={setUserAddress}
+                  selectedCrypto={selectedCrypto}
+                  setLevels={setLevels}
+                  />
+
+
+                  :
+
+                  <div className="">Ip not supported</div>
+
+                }
+
+              </>;
+              case "sendcrypto":
+                return <Sendcrypto
+                userAddress={userAddress}
+                setConfirmTx={setConfirmTx}
+                selectedCrypto={selectedCrypto}
+                setAmountRecieved={setAmountRecieved}
+                /> ;
+            default:
+                break;
         }
+
     }
+
+
     
 
  
    //test http://localhost:8000/getbanks
-   //live https://blokramp-api.onrender.com/getbanks
+   //live https://blok-ramp.herokuapp.com/getbanks
    const getListOfBanks = async (data) => {
     console.log(data, "country data");
     let response = await fetch(`https://blokramp-api.onrender.com/getbanks/${data}`);
@@ -345,7 +418,7 @@ export default function Sellform(props) {
     setCountry(country);
 
     if(country.country == 'NG' || country.country == 'GH' || country.country == 'KE' || country.country == 'UG' || country.country == 'ZA' || country.country == 'TZ' ) {
-        getListOfBanks(country.country);
+      getListOfBanks(country.country);
     }
 
    }
@@ -387,156 +460,7 @@ export default function Sellform(props) {
                 </div>
                }
             
-               {!formbankselect ?
-                <>
-                    <div className="form-group currency-form mb-4">
-                    <input type="number" class="input-control" aria-label="Input" onChange={(e) => changeing(e)} defaultValue={cryptoAmountBuy} />
-                    <span className="vr mx-3 my-1"></span>
-                    <Select
-                        styles={{
-                            control: (provided, state) => ({
-                                ...provided,
-                                border: 0,
-                                outline: 0,
-                                boxShadow: 'none',
-                                padding: 0,
-                                fontSize: 'var(--heroform__field-big-fs, 18px)',
-                                fontWeight: 400,
-                                color: '#081537',
-                                width: 100,
-                                }),
-                            valueContainer: (provided, state) => ({
-                                ...provided,
-                                padding: 0,
-                            }),
-                            option: (provided, state) => ({
-                                ...provided,
-                                fontSize: '15px',
-                            }),
-                        }}
-                        defaultValue={optionstwo[0]}
-                        options={optionstwo}
-                        onChange={(choose) => setSelectedCrypto(choose) }
-                        components={{ Option: IconOption, IndicatorSeparator:() => null, DropdownIndicator, ValueContainer}}
-                    />
-                </div>
-
-
-
-                <div className="form-group currency-form mb-4">
-                    <input type="number" class="input-control"  aria-label="Input" value={moneyinput}  />
-                    <span className="vr mx-3 my-1"></span>
-                    <Select
-                        styles={{
-                            control: (provided, state) => ({
-                                ...provided,
-                                border: 0,
-                                outline: 0,
-                                boxShadow: 'none',
-                                padding: 0,
-                                fontSize: 'var(--heroform__field-big-fs, 18px)',
-                                fontWeight: 400,
-                                color: '#081537',
-                                width: 100,
-                                }),
-                            valueContainer: (provided, state) => ({
-                                ...provided,
-                                padding: 0,
-                            }),
-                            option: (provided, state) => ({
-                                ...provided,
-                                fontSize: '15px',
-                            }),
-                        }}
-                        defaultValue={options[0]}
-                        options={options}
-                        components={{ Option: IconOption, IndicatorSeparator:() => null, DropdownIndicator, ValueContainer}}
-                    />
-                </div>
-                </>
-                :
-
-                <div className="">
-                    { !formbankdetails ? 
-                      <Bankselect 
-                        setFormbankselect={setFormbankselect}
-                        setProceednext={setProceednext}
-                        />
-                      :
-
-                      <>
-                     
-                      { country.country == 'NG' || country.country == 'GH' || country.country == 'KE' || country.country == 'UG' || country.country == 'ZA' || country.country == 'TZ' ?
-
-                        <Accountdetails
-                        setBankAccount={setBankAccount}
-                        bankAccount={bankAccount}
-                        setAccountNumber={setAccountNumber}
-                        accountNumber={accountNumber}
-                        formbankdetails={formbankdetails}
-                        setProceednext={setProceednext}
-                        setFormbankdetails={setFormbankdetails}
-                        banklist={banklist}
-                        setConfirmAccount={setConfirmAccount}
-                        setNotiy={setNotiy}
-                        setUserAddress={setUserAddress}
-                        selectedCrypto={selectedCrypto}
-                        />
-
-                        : country.currency == "USD" ?
-
-                        <Accountdetailsus
-                        setBankAccount={setBankAccount}
-                        bankAccount={bankAccount}
-                        setAccountNumber={setAccountNumber}
-                        accountNumber={accountNumber}
-                        setProceednext={setProceednext}
-                        setFormbankdetails={setFormbankdetails}
-                        setRoutingNumber={setRoutingNumber}
-                        setSwiftCode={setSwiftCode}
-                        setBeneficiaryName={setBeneficiaryName}
-                        setBeneficiaryAddress={setBeneficiaryAddress}                        
-                        setBeneficiaryCountry={setBeneficiaryCountry}
-                        setUserAddress={setUserAddress}
-                        selectedCrypto={selectedCrypto}
-                        />
-
-                        : country.currency == "EUR" || country.currency == "GBP" ?
-
-
-                        <Accountdetailsuk
-                        setBankAccount={setBankAccount}
-                        bankAccount={bankAccount}
-                        setAccountNumber={setAccountNumber}
-                        accountNumber={accountNumber}
-                        setProceednext={setProceednext}
-                        setFormbankdetails={setFormbankdetails}
-                        setRoutingNumber={setRoutingNumber}
-                        setSwiftCode={setSwiftCode}
-                        setBeneficiaryName={setBeneficiaryName}
-                        setBeneficiaryAddress={setBeneficiaryAddress}
-                        setBeneficiaryCountry={setBeneficiaryCountry}
-                        setPostalCode={setPostalCode}
-                        setStreetNumber={setStreetNumber}
-                        setStreetName={setStreetName}
-                        setCity={setCity}
-                        setUserAddress={setUserAddress}
-                        selectedCrypto={selectedCrypto}
-                        />
-
-
-                        :
-
-                        <div className="">Ip not supported</div>
-
-                      }
-
-                    </>
-
-                    }
-                </div>
-
-               }
+               {openextform()}
                
 
 
@@ -550,14 +474,22 @@ export default function Sellform(props) {
               }
                
 
-               { formcomplete ? 
-                  <div className="form-group">
-                    <button  className={ !confirmcAccount ? "btn btn-primary w-100 rounded-pill shadow buttongrey second": "btn btn-primary w-100 rounded-pill shadow"} onClick={ (e) => sell(e)} >Complete</button>
-                  </div>
-                 :
+               { levels === "sendcrypto" ? 
+                 <div className="form-group">
+                    <button  className={ !confirmcTx ? "btn btn-primary w-100 rounded-pill shadow buttongrey second": "btn btn-primary w-100 rounded-pill shadow"} onClick={ (e) => sell(e)} >Complete</button>
+                 </div>
+                 : levels === "home" ?
                 <div className="form-group">
-                  <div  className={ !formbankselect ? "btn btn-primary w-100 rounded-pill shadow" : !proceednext && formbankselect ? "btn btn-primary w-100 rounded-pill shadow buttongrey second": "btn btn-primary w-100 rounded-pill shadow"} onClick={ () => openextform()} > {formbankselect ? "Proceed" : <>Sell {selectedCrypto.label}</> }  </div>
+                  <div  className="btn btn-primary w-100 rounded-pill shadow" onClick={ () => setLevels("bankselect")} >  Sell { selectedCrypto.label }  </div>
                 </div>
+                 :  levels === "bankselect" ?
+                <div className="form-group">
+                  <div  className={ !formbankselect ? "btn btn-primary w-100 rounded-pill shadow buttongrey second": "btn btn-primary w-100 rounded-pill shadow"} onClick={ () => setLevels("accountdetails")} > Choose Method  </div>
+                </div>
+                : levels === "accountdetails" &&
+                <div className="form-group">
+                  <div  className={ !confirmBank ? "btn btn-primary w-100 rounded-pill shadow buttongrey second": "btn btn-primary w-100 rounded-pill shadow"} onClick={ () => setLevels("sendcrypto")} > Proceed  </div>
+                </div> 
                }
 
 

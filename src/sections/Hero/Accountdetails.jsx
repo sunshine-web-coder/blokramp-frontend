@@ -1,12 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { BiArrowBack } from 'react-icons/bi';
+import { ethers } from 'ethers';
 
 
   export default function Accountdetails(props) {
 
 
+  const [validAccount, setvalidAccount] = useState(0);
+
+
+
   const goback = () => {
     props.setFormbankdetails(false);
+    props.setLevels("bankselect");
     //props.setChooseMethod(false);
     //navigate(`/`);
   }  
@@ -19,7 +25,7 @@ import { BiArrowBack } from 'react-icons/bi';
     
    if(e.target.value.length === 10) {
 
-        const getpaymentlink = await fetch(`http://localhost:8000/confirmaccount`, 
+        const getpaymentlink = await fetch(`https://blokramp-api.onrender.com/confirmaccount`, 
         {
             method: 'POST',   
             headers: {
@@ -33,11 +39,12 @@ import { BiArrowBack } from 'react-icons/bi';
         console.log(url);
 
         if(url.status === 'success') {
-          props.setConfirmAccount(true);
           props.setAccountNumber(e.target.value);
+          setvalidAccount(1);
         } else{
-          console.log("this guy called")
-          props.setNotiy("This account number is invalid")
+          console.log("this guy called");
+          props.setNotiy("This account number is invalid");
+          setvalidAccount(2);
         }
 
    }
@@ -45,9 +52,22 @@ import { BiArrowBack } from 'react-icons/bi';
    }
 
 
+   const confirmAddress = (e) => {
+    const check = ethers.utils.isAddress(e.target.value);
+    if(check === true) {
+      props.setConfirmBank(true);
+      props.setUserAddress(e.target.value);
+    }
+   }
+
+
    useEffect(() => {
     console.log(props.bankAccount);
-  }, [props.bankAccount])
+
+    setTimeout(() => {
+      setvalidAccount(false);
+    }, 2000);
+  }, [props.bankAccount, validAccount])
 
 
   return (
@@ -71,7 +91,7 @@ import { BiArrowBack } from 'react-icons/bi';
      </label>
     </div>
         
-        <div className="form-group currency-form mb-4">
+        <div className="form-group currency-form mb-4" style={{  }}>
             <input 
                 type="number" 
                 className="input-control" 
@@ -79,7 +99,11 @@ import { BiArrowBack } from 'react-icons/bi';
                 aria-label="Input" 
                 name='customerAddress' 
                 defaultValue={props.accountNumber}
-                style={{fontSize: '17px'}}
+                style={{ 
+                    fontSize: '17px', 
+                    borderBottom: `${ validAccount == 2  ? "1px solid #ffcccb": validAccount == 1 && "1px solid #00ff00" }`, 
+                    color: `${ validAccount == 2 ? "#B33A3A" : validAccount == 1 && "#00ff00"}`
+                  }}
                 onChange={(e) => confirmAccount(e)}/>
         </div>
 
@@ -90,8 +114,9 @@ import { BiArrowBack } from 'react-icons/bi';
                 class="input-control" 
                 placeholder={`${props.selectedCrypto.label} address`}
                 aria-label="Input" 
-                name='customerAddress' 
-                onChange={(e) => props.setUserAddress(e)}/>
+                name='customerAddress'
+                style={{fontSize: '17px'}}
+                onChange={(e) => confirmAddress(e)}/>
         </div>
 
 

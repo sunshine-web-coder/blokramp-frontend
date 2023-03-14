@@ -7,12 +7,14 @@ export default function Bankselect(props) {
 
   const goback = () => {
     props.setFormbankselect(false);
+    props.setLevels("home");
   }
 
 
 
   const transfertype = (e) => {
-    props.setProceednext(true);
+    //props.formbankselect(true);
+    props.setFormbankselect(true);
   }
 
 

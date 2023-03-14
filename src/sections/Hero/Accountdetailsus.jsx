@@ -8,6 +8,7 @@ import { BiArrowBack } from 'react-icons/bi';
 
   const goback = () => {
     props.setFormbankdetails(false);
+    props.setLevels("bankselect");
     //props.setChooseMethod(false);
     //navigate(`/`);
   }    

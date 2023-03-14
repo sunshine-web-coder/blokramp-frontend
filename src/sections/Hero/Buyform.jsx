@@ -13,7 +13,6 @@ import { Tab, Tabs } from 'react-bootstrap';
 import Select, { components } from 'react-select';
 import currencyUSD from './assets/currency-usd.svg';
 import currencyBTC from './assets/currency-btc.svg';
-import currencyUSDT from './assets/tether.svg';
 import arrow from './assets/arrow-down.svg';
 import shape1 from './assets/hero-shape-1.svg';
 import shape2 from './assets/hero-shape-2.svg';
@@ -21,11 +20,17 @@ import shape3 from './assets/arrow-shape.svg';
 import shape4 from './assets/hero-user.svg';
 import currencyETH from './assets/ethereum.svg';
 import currencyBNB from './assets/binance.svg';
+import currencyUSDT from './assets/tether.svg';
+import currencyMatic from './assets/polygon.svg';
+import currencyDoge from './assets/dogecoin.svg';
+import currencyATOM from './assets/cosmos.svg';
+import currencyOKB from './assets/okb.svg';
 import { v4 as uuidv4 } from 'uuid';
 import { ethers } from 'ethers';
 import Buyemailandaddress from './Buyemailandaddress';
 import bitcoinaddress from 'bitcoin-address';
 import { validate, getAddressInfo } from 'bitcoin-address-validation';
+
 
 
 
@@ -35,11 +40,77 @@ const options = [
     { value: 'eur', label: 'EUR', icon:  currencyUSD },
 ]; 
 
-const optionstwo = [
+const optionstwoa = [
     { value: 'ethereum', label: 'ETH', icon:  currencyETH},
     { value: 'usdt', label: 'USDT', icon:  currencyUSDT },
     { value: 'binancecoin', label: 'BNB', icon:  currencyBNB },
-]; 
+];
+
+const optionstwo = [
+    {
+        value: 'ethereum',
+        label: 'ETH',
+        icon: currencyETH,
+        address: '0x0000000000000000000000000000000000001010',
+        chain: 1
+     },
+     {
+       value: 'binancecoin',
+       label: 'BNB',
+       icon: currencyBNB,
+       address: "0x0000000000000000000000000000000000001010",
+       chain: 56
+     },
+     {
+       value: 'matic-network',
+       label: 'MATIC',
+       icon: currencyMatic,
+       address: "0x0000000000000000000000000000000000001010",
+       chain: 137
+     },
+     {
+       value: 'usdt',
+       label: 'USDT',
+       icon: currencyUSDT,
+       address: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+       chain: 1
+     },
+     {
+       value: 'dogecoin',
+       label: 'Doge',
+       icon: currencyDoge,
+       address: "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+       chain: 56
+     },
+     {
+       value: 'cosmos',
+       label: 'ATOM',
+       icon: currencyATOM,
+       address: "0x0eb3a705fc54725037cc9e008bdede697f62f335",
+       chain: 56
+     },
+     {
+       value: 'okb',
+       label: 'OKB',
+       icon: currencyOKB,
+       address: "0x75231f58b43240c9718dd58b4967c5114342a86c",
+       chain: 1
+     },
+     {
+        value: 'okb',
+        label: 'test',
+        icon: "./asset/test",
+        address: "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee",
+        chain: 97
+      },
+      {
+        value: 'okb',
+        label: 'test',
+        icon: "./asset/test",
+        address: "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee",
+        chain: 97
+      }
+];
 
 
 
@@ -61,7 +132,7 @@ const svgVariants = {
 const IconOption = props => (
     <components.Option {...props}>
         <span className="me-2"><img src={props.data.icon} alt={props.data.label}/></span>
-        <span>{props.data.label}</span>
+        <span>{props.data.label}</span> 
     </components.Option>
 );
 
@@ -109,21 +180,23 @@ const DropdownIndicator = props => {
 export default function Buyform(props) {
 
 
-    const [buyerEmail, setBuyerEmail] = useState(undefined);
+    const [buyerEmail, setBuyerEmail] = useState();
     const [selectedCrypto, setSelectedCrypto] = useState(optionstwo[0]);
-    const [cryptoAmountBuy, setCryptoAmountBuy] = useState(undefined);
+    const [cryptoAmountBuy, setCryptoAmountBuy] = useState();
     const [moneyinput, setMoneyInput] = useState(4000);
     const [picked, setPicked] = useState(false);
-    const [email, setEmail] = useState(undefined);
+    const [email, setEmail] = useState();
     const [address, setAddress] = useState('');
     //for form two
     const [formtwo, setFormTwo] = useState(false);
     //check correct address
     const [proceed, setProceed] = useState(false);
     //btc price
-    const [btc, setBTC] = useState(undefined);
+    const [btc, setBTC] = useState();
     //notification
-    const [notify, setNotiy] = useState(undefined);
+    const [notify, setNotiy] = useState();
+    //track window instance
+    const [windowTrack, setWindowTrack] = useState();
  
  
 
@@ -146,7 +219,7 @@ export default function Buyform(props) {
     const initiate = async (e) => {
        e.preventDefault();
        const id = uuidv4();
-       const mix = `${id},${selectedCrypto.value},${address},${cryptoAmountBuy}`;
+       const mix = `${id},${selectedCrypto.value},${address},${cryptoAmountBuy},${selectedCrypto.address},${selectedCrypto.chain}`;
        props.setCofirmation(mix);
        
        //Run checks 
@@ -174,12 +247,18 @@ export default function Buyform(props) {
          console.log(url.response);
 
         //window.open(url.data.link, 'newwindow', 'width=500,height=600');
-        window.open(url.response.data.link, 'newwindow', 'width=500,height=600');
-
-        if(url.response.status == "success") {
-            props.setLoading(true);
-            loop();
+        try {
+            const openWindow = window.open(url.response.data.link, 'newwindow', 'width=500,height=600');
+            setWindowTrack(openWindow);
+    
+            if(url.response.status == "success") {
+                props.setLoading(true);
+                loop();
+            }
+        } catch(err) {
+            props.setLoading(false);            
         }
+
 
        
     }
@@ -198,6 +277,7 @@ export default function Buyform(props) {
 
             props.setLoadSuccess(true);
             props.setLoading(false);
+            windowTrack.close();
           return;
 
         } else {
@@ -238,6 +318,11 @@ export default function Buyform(props) {
 
 
     const changeing = async (e) => {
+
+        if(selectedCrypto.value == "usdt") {
+            setCryptoAmountBuy(moneyinput);
+            return;
+        }
         
         let response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto.value}&vs_currencies=usd`);
         let price = await response.json();
@@ -306,7 +391,7 @@ export default function Buyform(props) {
                        <div className='fs-xs fs-md-sm'><span className="text-dark fw-bold">{btc}</span> USD</div>
                    </div>
                </div>
-               {notify !== undefined &&
+               {notify &&
                 <div className="text-warning" style={{fontSize: '12px'}}>
                     {notify}
                 </div>
@@ -356,7 +441,7 @@ export default function Buyform(props) {
                                 outline: 0,
                                 boxShadow: 'none',
                                 padding: 0,
-                                fontSize: 'var(--heroform__field-big-fs, 18px)',
+                                fontSize: 'var(--heroform__field-big-fs, 14px)',
                                 fontWeight: 400,
                                 color: '#081537',
                                 width: 100,

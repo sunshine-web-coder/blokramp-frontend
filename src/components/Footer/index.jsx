@@ -91,7 +91,7 @@ const Footer = () => {
                         </div>
                         <div className="fs-xs" style={{ '--bs-font-size' : '15px' }}>
                             <p className='mb-4'>Blokramp is an on-and-off-ramp solution tailored for individual and institutional usage. Our Whitelabel on-ramp solution is designed to scale your business.</p>
-                            <div>© Copyright 2023, All Rights Reserved</div>
+                            <div>© Copyright 2024, All Rights Reserved</div>
                         </div>
                     </div>
                 </Col>
